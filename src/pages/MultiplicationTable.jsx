@@ -3,6 +3,20 @@ import { useState } from "react";
 
 function MultiplicationTable() {
   const [input, setInput] = useState("");
+  const result = []
+
+  const getMultiplicationTable = () => {
+    //check if letter or null
+    if (isNaN(input) || !input) {
+      return "Please enter a numer"
+    }
+
+    //creating multiplication
+    for(let i = 1; i <= 10; i++) {
+      result.push(input * i);
+    }
+    return result.map((data) => data);
+  };
 
   return (
     <div className="container p-5">
@@ -24,7 +38,7 @@ function MultiplicationTable() {
             rows="10"
             readOnly={true}
             placeholder="Output"
-            value={input}
+            value={getMultiplicationTable()}
           />
         </div>
       </div>
